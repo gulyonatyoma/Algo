@@ -3,37 +3,27 @@
 using namespace std;
 
 void solve() {
-    int n, k;
-    cin >> n >> k;
-    vector<int> a(n);
+    int n;
+    int m;
+    cin >> n >> m;
+    map<int, int> c;
     for (int i = 0; i < n; i++) {
-        cin >> a[i];
-    }
-    for (int i = 0; i < k; i++) {
         int x;
         cin >> x;
-        int l = 0, r = n - 1;
-        while (r - l > 1) {
-            int m = (r + l) / 2;
-            if (a[m] > x) {
-                r = m;
-            } else {
-                l = m;
-            }
-        }
-        if (a[r] - x < x - a[l]) {
-            cout << a[r] << '\n';
-        } else {
-            cout << a[l] << '\n';
-        }
+        c[x] = 1;
+    }
+    for (int i = 0; i < m; i++) {
+        int x;
+        cin >> x;
+        cout << (c[x] ? "YES\n" : "NO\n");
     }
 }
 
 signed main() {
     ios::sync_with_stdio(false);
     cin.tie(nullptr);
-    int tt = 1;
-    while (tt--) {
+    int t = 1;
+    while (t--) {
         solve();
         cout << '\n';
     }
