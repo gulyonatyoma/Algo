@@ -1,0 +1,19 @@
+pwd - you should see a directory path printed out 
+
+cd / - you can change the working directory using the "cd" command
+
+cd .. - to go up to the parent directory
+
+typing cd on its own is a quick shortcut to get back to your homr directory
+
+mkdir /tmp/tutorial - creating a new directory
+cd /tmp/tutorial
+
+ls > output.txt - capturing the output of that command 
+
+echo "This is a test" > test_1.txt - writing this text to this file
+
+g++ name.cpp -o name && ./name
+
+g++ ./name < inp.txt > out.txt
+
