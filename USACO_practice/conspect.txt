@@ -1,0 +1,336 @@
+__int128_t - -2 ** 127, 2 ** 127
+
+(a + b) mod m = (a mod m + b mod m) mod m 
+(a - b) mod m = (a mod m - b mod m) mod m 
+(a * b) mod = (a mod m * b mod m) mod m 
+
+#Shortening code:
+    typedef long long ll;
+    typedef vector<int> vi;
+    typedef pair<int, int> pi;
+    #define f first
+    #define s second
+    #define pb push_back
+    #define mp make_pair
+    #define rep(i, a, b) for (int i = a; i <= b; i++)
+    #define SQ(a) (a) * (a)
+
+
+Bine's formula: f(n) = ((1 + sqrt(5)) ** n - (1 - sqrt(5)) ** n) / (2 ** n * sqrt(5))
+
+log:
+    logu(x) = logk(x) / logk(u)
+
+
+Asympthotics:
+    n <= 10: O(n!)
+    n <= 20: O(2 ** n)
+    n <= 500: O(n ** 3)
+    n <= 5000: O(n ** 2)
+    n <= 10 ** 6: O(n log n) or O(n)
+    n is large: O(1) or (log n)
+
+sorting:
+    vector<int> v = {4, 2, 5, 3, 5, 8, 3};
+    sort(v.begin(), v.end());
+    sort(v.rbegin(), v.rend())
+
+    int n = 7;
+    int a[] = {4, 2, 5, 3, 5, 8, 3};
+    sort(a, a + n);
+
+comparison operators:
+    vector<pair<int, int>> v;
+    v.push_back({1, 5});
+    v.push_back({2, 3});
+    v.push_back({1, 2});
+    sort(v.begin(), v.end());
+
+    vector<tuple<int, int, int>> v;
+    v.push_back({2, 1, 4});
+    v.push_back({1, 5, 3});
+    v.push_back({2, 1, 3});
+    sort(v.begin(), v.end());
+
+user_defined structures:
+    struct P {
+        int x, y;
+        bool operator<(const P &p) {
+            if (x != p.x) {
+                return x < p.x;
+            } else {
+                return y < p.y;
+            }
+        }
+    }
+
+comparison functions:
+    bool comp(string a, string b) {
+        if (a.size() b.size()) return a.size() < b.size();
+        return a < b;
+    }
+    sort(v.begin(), v.end(), comp);
+
+binary_search:
+    method 1:
+        int a = 0, b = n - 1;
+        while (a <= b) {
+            int k = (a + b) / 2;
+            if (array[k] == x) {
+                // x found ar index k
+            }
+            if (array[k] > x) b = k - 1;
+            else a = k + 1;
+        }
+    method 2:
+        int k = 0;
+        for (int b = n / 2; b >= 1; b /= 2) {
+            while (k + b < n && array[k + b] <= x) k += b;
+        }
+        if (array[k] == x) {
+            // x found ar index k
+        }
+
+C++ functions: 
+    - lower_bound: returns a pointer to the first array element whose value is at least x
+    - upper_bound: returns a pointer to the first array element whose value is larger than x
+    - equal_range: returns both above pointers
+
+    auto k = lower_bound(array, array + n, x) - array;
+    if (k < n && array[k] == x) {
+        // x found at index k
+    }
+
+    auto a = lower_bound(array, array + n, x);
+    auto b = upper_bound(array, array + n, x);
+    cout << b - a << '\n';
+
+    auto r = equal_range(array, array + n, x);
+    cout << r.second - r.first << '\n';
+
+
+DATA STRUCTURES
+Dynamic array:
+    vector<int> v;
+    v.push_back(3);
+    v.push_back(2);
+    v.push_back(5);
+
+    cout << v[0] << '\n';
+    cout << v[1] << '\n';
+    cout << v[2] << '\n';
+    
+    for (int i = 0; i < v.size(); i++) {
+        cout << v[i] << '\n';
+    }
+
+    for (auto x : v) {
+        cout << x << '\n';
+    }
+
+    vector<int> v;
+    v.push_back(5);
+    v.push_back(2);
+    cout << v.back() << '\n';
+    v.pop_back();
+    cout << v.back() << '\n';
+
+    vector<int> v = {2, 4, 2, 5, 1};
+
+    vector<int> v(10);
+    vector<int> v(10, 5);
+
+
+    string a = "hatti";
+    string b = a + a;
+    cout << b << "\n";
+    b[5] = 'v';
+    cout << b << '\n';
+    string c = b.substr(3, 4); // numbers of positions, NOT INDEXES
+    cout << c << "\n";
+
+
+Set structures:
+    set<int> s;
+    s.insert(3);
+    s.insert(2);
+    s.insert(5);
+
+    cout << s.count(3) << '\n';
+    cout << s.count(4) << '\n';
+    s.erase(3);
+    s.insert(4);
+    cout << s.count(3) << '\n';
+    cout << s.count(4) << '\n';
+
+    set<int> s = {2, 5, 6, 8};
+    cout << s.size() << '\n';
+    for (auto x : s) {
+        cout << x << '\n';
+    }
+    ! distinct numbers in set
+
+    s.erase(s.find(5));
+    cout << s.count(5) << '\n';
+
+Map structures:
+    map<string, int> m;
+    m["monkey"] = 4;
+    m["banana"] = 3;
+    m["harpsichord"] = 9;
+    cout << m["banana"] << '\n';
+
+    if (m.count("aybabtu")) {
+        // key exists
+    }
+
+    for (auto x : m) {
+        cout << x.first << ' ' << x.second << '\n';
+    }
+
+Working with ranges:
+    sort(v.begin(), v.end());
+    reverse(v.begin(), v.end());
+    random_shuffle(v.begin(), v.end());
+
+    sort(a, a + n);
+    reverse(a, a + n);
+    random_shuffle(a, a + n);
+
+Set iterators:
+    set<int>::iterator it = s.begin();
+    auto it = s.begin();
+    cout << *it << '\n';
+
+    for (auto it = s.begin(), it != s.end(); i++) {
+        cout << *it << '\n';
+    }
+
+    auto it = s.end();
+    it--;
+    cout << *it << '\n';
+
+    auto it = s.find(x);
+    if (it == s.end()) {
+        // x is not found
+    }
+
+    //the following code finds the element nearest to x
+    auto it = s.lower_bound(x);
+    if (it == s.begin()) {
+        cout << *it << '\n';
+    } eles if (it == s.end()) {
+        it--;
+        cout << *it << '\n';
+    } else {
+        int a = *it;
+        it--;
+        int b = *it;
+        if (x - b < a - x) {
+            cout << b << '\n';
+        } else {
+            cout << a << '\n';
+        }
+    }
+
+Other structures:
+    bitset<10> s;
+    s[1] = 1;
+    s[3] = 1;
+    s[4] = 1;
+    s[7] = 1;
+    cout << s[4] << '\n';
+    cout << s[5] << '\n';
+
+    bitset<10> s(string("0010011010"));
+    cout << s[4] << '\n';
+    cout << s[5] << '\n';
+    cout << s.count(); // 4
+
+    bitset<10> a(string("0010110110"));
+    bitset<10> b(string("1011011000"));
+
+    cout << (a & b) << '\n'; // 0010010000
+    cout << (a | b) << '\n'; //1011111110
+    cout << (a ^ b) << '\n'; //1001101110
+
+Deque:
+    deque<int> d;
+    d.push_back(5);
+    d.push_back(2);
+    d.push_back(3);
+    d.push_front(3);
+    d.pop_back();
+    d.pop_front();
+
+Stack:
+    stack<int> s;
+    s.push(3);
+    s.push(2);
+    s.push(5);
+    cout << s.top(); // 5
+    s.pop();
+    cout << s.top(); // 2
+
+Queue:
+    queue<int> q;
+    q.push(3);
+    q.push(2);
+    q.push(5);
+    cout << q.front(); // 3
+    q.pop();
+    cout << q.front(); // 2
+
+Priority_queue:
+    priority_queue<int> q;
+    q.push(3);
+    q.push(5);
+    q.push(7);
+    q.push(2);
+    cout << q.top() << '\n'; // 7
+    q.pop();
+    cout << q.top() << '\n'; // 5
+    q.pop();
+    q.push(6);
+    cout << q.top() << '\n'; // 6
+    q.pop();
+
+    priority_queue<int, vector<int> greater<int>> q;
+
+Policy-based data structures:
+    #include <ext/bp_ds/assoc_container.hpp>
+    using namespace __gnu_pbds;
+    typeder trr<int, null_type,less<int>, rb_tree_tag, tree_order_statistics_node_update> indexed_set;
+
+    indexed_set s;
+    s.insert(2);
+    s.insert(3);
+    s.insert(7);
+    s.insert(9);
+
+    auto x = s.find_by_order(2); // returns an iterator to an element at a given position 
+    cout << *x << '\n'; // 7
+
+    cout << s.order_of_key(7) << '\n'; // 2
+    cout << s.order_of_key(6) << '\n'; // 2
+    cout << s.order_of_key(8) << '\n';
+
+#defining
+    #ifdef MACROS
+        //code which running if MACROS is defined 
+    #endif
+
+Arrays
+    arr<int, size> name{};
+
+Tuples
+    int a = 3, b = 4, c = 5;
+    tuple<int, int, int> t = tie(a, b, c);
+    cout << get<0>(t); // first element of tuple
+
+    tuple<string, string, int> tp2 = make_tuple("Hello", "world", 100);
+
+    int x;
+    string s1, s2;
+    tie(s1, s2, x) = tp2;
+    cout << s1 << s2 << x;
