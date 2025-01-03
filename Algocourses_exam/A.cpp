@@ -4,18 +4,17 @@ using namespace std;
 
 #define int long long
 
-int gcd(int a, int b) {
-    return (b ? gcd(b, a % b) : a + b);
-}
-
-int lcm(int a, int b) {
-    int q = gcd(a, b);
-    return a / q * b;
-}
-
 void solve() {
-    int n, k; cin >> n >> k;
-    cout << lcm(n, k);
+    int n;
+    cin >> n;
+    vector<int> a(n);
+    for (int i = 0; i < n; i++) {
+        cin >> a[i];
+    }
+    sort(a.begin(), a.end());
+    for (auto ti : a) {
+        cout << ti << ' ';
+    }
 }
 
 signed main() {
@@ -27,6 +26,5 @@ signed main() {
         solve();
         cout << '\n';
     }
-
     return 0;
 }
